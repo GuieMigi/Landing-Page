@@ -59,6 +59,10 @@ section {
     display: inline-block;
 }
 
+li {
+    padding: 10px;
+}
+
 .page-header {
     background: #fff;
     position: fixed;
@@ -94,5 +98,9 @@ section:nth-of-type(even) .article-container {
 /* Active section styling. This method is used from the Udacity Landing Page starter code */
 section.active {
     background: rgb(0, 0, 0);
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+.active-button {
+    background: red;
 }

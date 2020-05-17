@@ -26,15 +26,25 @@
 
 const pageSections = document.querySelectorAll("section");
 const navbar = document.getElementById("navbar-list");
+let currentItem = "";
 
+// Generates the navbar items based on the available items
 function generateNavbar() {
-    let fragment = document.createDocumentFragment();
+    const fragment = document.createDocumentFragment();
 
     for (let i = 1; i <= pageSections.length; i++){
         const listItem = document.createElement("li");
-        listItem.innerHTML = `<a href="#section${[i]}" style="color: white; text-decoration: none;">Section ${[i]}</a>`;
+        listItem.innerHTML = `<a id="button${[i]}" href="#section${[i]}" style="color: white; text-decoration: none;">Section ${[i]}</a>`;
         fragment.appendChild(listItem);
-        listItem.style.cssText = "padding: 10px";
+        currentItem = listItem.id;
+        console.log(currentItem);
+        listItem.addEventListener("click", function() {
+            if (currentItem == listItem.id){
+                listItem.classList.add("active-button");
+            } else {
+                listItem.classList.remove("active-button");  
+            }
+        })
     }
 
     navbar.appendChild(fragment);

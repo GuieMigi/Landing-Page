@@ -24,33 +24,16 @@
 
 // Set sections as active
 
-// Global variables
+
 const pageSections = document.querySelectorAll("section");
 const navbar = document.getElementById("navbar-list");
 
-// A helper function that removes the active class from all the buttons
+// A function that removes the active class from all the buttons
 function removeActiveClass() {
-        document.querySelectorAll("li").forEach(button => {
+    document.querySelectorAll("li").forEach(button => {
         button.classList.remove("active-button");
     });
 }
-
-// Generates the navbar items based on the available items
-function generateNavbar() {
-    const fragment = document.createDocumentFragment();
-
-    for (let i = 1; i <= pageSections.length; i++){
-        const listItem = document.createElement("li");
-        listItem.innerHTML = `<a id="button${i}" class="button" href="#section${i}" style="color: white; text-decoration: none;">Section ${i}</a>`;
-        fragment.appendChild(listItem);
-    }
-
-    navbar.appendChild(fragment);
-    navbar.style.backgroundColor = "black";
-}
-
-// Populate the navigation bar
-generateNavbar();
 
 // Check that the DOM was generated
 document.addEventListener('DOMContentLoaded', function () {
@@ -65,4 +48,54 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     });
+});
+
+// Helper function that scrolls to the clicked section
+function clickedSection(target) {
+    for (const section of pageSections) {
+        // Check if the parameter matches the section's id
+        if (target === section.getAttribute('id')) {
+            // Get the section's rectangle
+            const direction = section.getBoundingClientRect()
+            // Scroll to the position provided by the ractangle
+            scrollTo(direction.x, direction.y + window.pageYOffset)
+        }
+    }
+}
+
+// Generates the navbar items based on the available items
+function generateNavbar() {
+    const fragment = document.createDocumentFragment();
+    for (let i = 1; i <= pageSections.length; i++) {
+        const listItem = document.createElement("li");
+        listItem.innerHTML = `<a id="button${i}" class="button" href="#section${i}" style="color: white; text-decoration: none;">Section ${i}</a>`;
+        fragment.appendChild(listItem);
+    }
+    navbar.appendChild(fragment);
+    navbar.style.backgroundColor = "black";
+}
+
+// Populate the navigation bar
+generateNavbar();
+
+// Function that returns the section that is in the viewport
+function inViewport(section) {
+    let bounding = section.getBoundingClientRect();
+    return (
+        bounding.top <= 150 &&
+        bounding.left <= 150 &&
+        bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        bounding.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+};
+
+// Add Scroll EventListener add the active class to the section that is in the viewport
+window.addEventListener("scroll", function () {
+    for (const section of pageSections) {
+        if (inViewport(section)) {
+            section.classList.add("active");
+        } else {
+            section.classList.remove("active");
+        }
+    }
 });

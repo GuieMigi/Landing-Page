@@ -89,7 +89,7 @@ li {
     }
 }
 
-/* // Every other section get's aligned to the right. This method is used from the Udacity Landing Page starter code */
+/* Every other section gets aligned to the right. This method is used from the Udacity Landing Page starter code */
 section:nth-of-type(even) .article-container {
     margin-right: 0;
     margin-left: auto;
@@ -100,6 +100,12 @@ section.active {
     background: rgb(0, 0, 0);
     background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
 }
+
+ .navbar-menu .button-link:hover {
+    color: red;
+    transition: ease 0.5s all;
+    cursor: pointer;
+  }
 
 .navbar-menu .button-link {
     text-decoration: none;

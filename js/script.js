@@ -1,30 +1,3 @@
-// Define Global Variables
-
-// End Global Variables
-
-// Start Helper Functions
-
-// End Helper Functions
-
-// Begin Main Functions
-
-// build the nav
-
-// Add class 'active' to section when near top of viewport
-
-// Scroll to anchor ID using scrollTO event
-
-// End Main Functions
-
-// Begin Events
-
-// Build menu 
-
-// Scroll to section on link click
-
-// Set sections as active
-
-
 const pageSections = document.querySelectorAll("section");
 const navbar = document.getElementById("navbar-list");
 
@@ -72,9 +45,6 @@ function generateNavbar() {
     navbar.appendChild(fragment);
     navbar.style.backgroundColor = "black";
 }
-
-// Populate the navigation bar
-generateNavbar();
 
 // Checks and returns the section that is in the viewport
 function inViewport(section) {
@@ -125,5 +95,9 @@ function detectClickedSection(target) {
     }
 }
 
+// Populate the navigation bar
+generateNavbar();
+// Set the active section on scroll
 activeSection();
+// Scroll to the clicked section
 scrollOnClick()

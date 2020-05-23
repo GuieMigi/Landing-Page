@@ -101,6 +101,12 @@ section.active {
     background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
 }
 
-.active-button {
-    background: red;
+.navbar-menu .button-link {
+    text-decoration: none;
+    color: white;
+}
+
+.navbar-menu .active-button {
+    font-weight: bold;
+    color: red;
 }
